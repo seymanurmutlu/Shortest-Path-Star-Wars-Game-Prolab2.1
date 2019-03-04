@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 
+
 public class starWarsProject extends JFrame {
 
     public starWarsProject(String title) throws HeadlessException {
@@ -19,6 +20,13 @@ public class starWarsProject extends JFrame {
 
     }
 
+    Vector<Character> chr = new Vector<Character>();
+    
+    public Vector getCharacters(){
+            return this.chr;
+        }
+    
+    
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
         File harita = new File("harita.txt");
@@ -83,12 +91,16 @@ public class starWarsProject extends JFrame {
                 System.out.println("Duzgun secim yap.");
             }
                 
+            
                 
 
         
         
         starWarsProject screen = new starWarsProject("Star Wars");
         Graphic graphic = new Graphic();
+        
+        
+        
         screen.setVisible(true);   //JFramemin gozukmesi icin girilmis bir komut
         screen.setResizable(true); //Pencere boyutu degistirilebilir nitelikte olmas˝ iÁin yazildi
         screen.setSize(700, 700);
