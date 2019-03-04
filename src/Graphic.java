@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Vector;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.FileImageInputStream;
@@ -16,6 +17,19 @@ public class Graphic extends JPanel {
 	private BufferedImage heart;
 	private BufferedImage reward;
 	
+        Location lokas = new Location();
+        
+        public starWarsProject karakter;
+        
+        Vector<Character> grphcchr = karakter.getCharacters();
+        /*vectorun lastindexindeki karakter daima iyi karakter olacaktir. Cunku
+        txt okumadan sonra iyi karakter secimi yapiyoruz. Grap[hic kutuphanesi icin
+        kullanilacagi zaman bu sira goz onunde tutulmalidir*/
+         
+        
+       
+        
+        //grphcchr = getCharacters();
 	public Graphic()
 	{
 		try {
