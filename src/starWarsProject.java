@@ -5,8 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,9 +21,9 @@ public class starWarsProject extends JFrame {
 
     }
 
-    Vector<Character> chr = new Vector<Character>();
+    ArrayList<Character> chr = new ArrayList<>();
     
-    public Vector getCharacters(){
+    public ArrayList<Character> getCharacters(){
             return this.chr;
         }
     
@@ -32,8 +33,9 @@ public class starWarsProject extends JFrame {
         File harita = new File("harita.txt");
         int geciciSatir = 0;
         byte stormtrooperNum = 0,darthVaderNum = 0, kyloRenNum = 0;
-        Vector<Character> chr = new Vector<Character>(); /*karakterlerin tutulacagi
-        vector, bu vectorun lastindexindeki karakter daima iyi karakter olacaktir. Cunku
+        ArrayList<Character> chr = new ArrayList<Character>(); 
+        /*karakterlerin tutulacagi
+        arraylist, bu arraylist lastindexindeki karakter daima iyi karakter olacaktir. Cunku
         txt okumadan sonra iyi karakter secimi yapiyoruz. Grap[hic kutuphanesi icin
         kullanilacagi zaman bu sira goz onunde tutulmalidir*/
          
@@ -63,15 +65,15 @@ public class starWarsProject extends JFrame {
                 System.out.println(output[1]);/*karakter adini verir*/
                 System.out.println(output[3]);/*karakter turunu verir*/
                 if(output[1].equalsIgnoreCase("stormtrooper")){
-                    chr.addElement(new Stormtrooper("Stormtrooper"+stormtrooperNum,"kotu"));
+                    chr.add(new Stormtrooper("Stormtrooper"+stormtrooperNum,"kotu"));
                     stormtrooperNum++;
                 }
                 else if(output[1].equalsIgnoreCase("darth vader")){
-                    chr.addElement(new Stormtrooper("DarthVader"+darthVaderNum,"kotu"));
+                    chr.add(new Stormtrooper("DarthVader"+darthVaderNum,"kotu"));
                     darthVaderNum++;
                 }
                 else if(output[1].equalsIgnoreCase("kylo ren")){
-                    chr.addElement(new Stormtrooper("KyloRen"+kyloRenNum,"kotu"));
+                    chr.add(new Stormtrooper("KyloRen"+kyloRenNum,"kotu"));
                     kyloRenNum++;
                 }
             }
@@ -84,9 +86,9 @@ public class starWarsProject extends JFrame {
         String gamerchr = input.nextLine();
         
             if(gamerchr.equalsIgnoreCase("m")){
-                chr.addElement(new MasterYoda("MasterYoda","Iyi"));
+                chr.add(new MasterYoda("MasterYoda","Iyi"));
             }else if(gamerchr.equalsIgnoreCase("s")){
-                chr.addElement(new LukeSkywalker("LukeSkywalker","Iyi"));
+                chr.add(new LukeSkywalker("LukeSkywalker","Iyi"));
             }else{
                 System.out.println("Duzgun secim yap.");
             }
@@ -96,16 +98,22 @@ public class starWarsProject extends JFrame {
 
         
         
-        starWarsProject screen = new starWarsProject("Star Wars");
-        Graphic graphic = new Graphic();
+            starWarsProject screen = new starWarsProject("Star Wars");
+            screen.setSize(700, 700);
+            screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    		
+            Graphic graphic = new Graphic();
+            graphic.requestFocus(); /*Klavyeden girdi alinacagi icin odagi graphic nesnesine verdik*/
+            graphic.addKeyListener(graphic); /*Klavyeden gonderilen girdileri alir*/
+            graphic.setFocusable(true);       /*Odak graphic nesnesine verildi*/
+            graphic.setFocusTraversalKeysEnabled(false); /*Klavye islemlerinnin gerceklesmesi icin yazildi*/
+            
+            screen.add(graphic);
+            screen.setVisible(true);   /*JFramemin gozukmesi icin girilmis bir komut*/
+            screen.setResizable(true); /*Pencere boyutu degistirilebilir nitelikte olmasi icin yazildi*/
         
         
-        
-        screen.setVisible(true);   //JFramemin gozukmesi icin girilmis bir komut
-        screen.setResizable(true); //Pencere boyutu degistirilebilir nitelikte olmas˝ iÁin yazildi
-        screen.setSize(700, 700);
-        screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        screen.add(graphic);
+            System.out.println("dogru mu"+chr.size());
 
     }
 
