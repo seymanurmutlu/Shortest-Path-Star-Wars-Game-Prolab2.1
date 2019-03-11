@@ -1,4 +1,3 @@
-
 public class Stormtrooper extends Character {
 
     int stormtrooperNumber;
@@ -23,13 +22,13 @@ public class Stormtrooper extends Character {
         kind = "Kotu";
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
+//    public Location getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Location location) {
+//        this.location = location;
+//    }
 
     public int getStormtrooperNumber() {
         return stormtrooperNumber;
@@ -39,15 +38,15 @@ public class Stormtrooper extends Character {
         this.stormtrooperNumber = stormtrooperNumber;
     }
 
-    @Override
-    public void shortestPath() {/*Override edilecek*/
-
-    }
+//    @Override
+//    public void shortestPath(int mat[][], int i, int j, int x, int y) {/*Override edilecek*/
+//
+//    }
 
     public Character addStormtrooper(Character Stormtrooper) {
         Stormtrooper.setName("Stormtrooper" + stormtrooperNumber);
         Stormtrooper.setKind("Kotu");
-        Stormtrooper.setLocation(location); // duzelt ;   location i nasil olusturacagimiz belli degil su an     
+        //Stormtrooper.setLocation(location); // duzelt ;   location i nasil olusturacagimiz belli degil su an     
         
         return Stormtrooper;
     }

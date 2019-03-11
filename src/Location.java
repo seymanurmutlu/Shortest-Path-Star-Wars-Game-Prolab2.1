@@ -1,40 +1,58 @@
 
-import java.util.LinkedList;
-import java.util.Queue;
-
-
 public class Location {
-    Queue<Integer> xAxis = new LinkedList<>(); 
-    Queue<Integer> yAxis = new LinkedList<>(); 
-
-    public Location() {
-        
+    
+    int xAxis = 0, yAxis = 0, distance = 0;
+    int matrixRow = 0, matrixCol = 0;
+    
+    Location(int xAxis, int yAxis, int distance) {
+        this.xAxis = xAxis;
+        this.yAxis = yAxis;
+        this.distance = distance;
     }
 
-    public Queue<Integer> getxAxis() {
+    Location() {
+        /*iyi krakterlerin kullanabilmesi icin default constructor*/
+    }
+
+    public int getxAxis() {
         return xAxis;
     }
 
-    public void setxAxis(Queue<Integer> xAxis) {
+    public void setxAxis(int xAxis) {
         this.xAxis = xAxis;
     }
 
-    public Queue<Integer> getyAxis() {
+    public int getyAxis() {
         return yAxis;
     }
 
-    public void setyAxis(Queue<Integer> yAxis) {
+    public void setyAxis(int yAxis) {
         this.yAxis = yAxis;
     }
-    
-    private void displayContentsOfQueue(){ /*this method displays contents of queue*/
-        System.out.println("Elements of xAxis :"+ xAxis);
-        System.out.println("Elements of yAxis :"+ yAxis);
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public int getMatrixRow() {
+        return matrixRow;
+    }
+
+    public void setMatrixRow(int matrixRow) {
+        this.matrixRow = matrixRow;
+    }
+
+    public int getMatrixCol() {
+        return matrixCol;
+    }
+
+    public void setMatrixCol(int matrixCol) {
+        this.matrixCol = matrixCol;
     }
     
-    private void displayHeadOfQueue(){ /*this method displays head of queues*/
-        System.out.println("Head of xAxis Queue :" + xAxis.peek() );
-        System.out.println("Head of yAxis Queue :" + yAxis.peek() );
-    }
-    
+
 }
