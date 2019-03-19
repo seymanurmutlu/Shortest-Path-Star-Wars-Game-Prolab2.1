@@ -1,5 +1,6 @@
-Karakter:Stormtrooper,Kapi:A
-Karakter:Stormtrooper,Kapi:B
+Karakter:Stormtrooper,Kapi:C
+Karakter:kylo ren,Kapi:B
+Karakter:darth vader,Kapi:E
 0	0	0	0	1	0	0	0	0	0	0	0	1	0
 0	1	1	1	1	0	1	1	1	1	1	1	1	0
 0	1	0	1	1	1	1	0	1	0	0	0	1	0

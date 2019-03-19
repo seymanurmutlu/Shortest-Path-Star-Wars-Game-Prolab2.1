@@ -1,16 +1,15 @@
-
 public class LukeSkywalker extends Character {
 
-    private int lives;
+    public int lives;
     private Location location = new Location();
 
-    public LukeSkywalker(String name, String kind) {
-        super(name, kind);
+    public LukeSkywalker(String name, String kind,int lives,int matrixRow, int matrixCol, int startRow, int startCol) {
+        super(name, kind, matrixRow, matrixCol, startRow, startCol);
         this.location.matrixRow = 5; // map [satir] [sutun]
         this.location.matrixCol = 6;
         this.location.xAxis = 6; //kordinat duzlemi sistemi
         this.location.yAxis = 5;
-        lives = 3;
+        this.lives=lives;
     }
 
     public String getName() {
@@ -26,15 +25,17 @@ public class LukeSkywalker extends Character {
     }
 
     public void setKind(String kind) {
-        this.kind = kind;
+        kind = "Iyi";
     }
 
     public Location getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLocation(int xAxis, int yAxis) {
+        this.location.xAxis = xAxis;
+        this.location.yAxis = yAxis;
+        //this.location = location;
     }
 
     public void printLocation() {
@@ -62,6 +63,6 @@ public class LukeSkywalker extends Character {
     }
 
     public int decreaseLives(int lives) {/*this method for decreasing live numbers */
-        return lives--;
+        return this.lives=lives-1;
     }
 }

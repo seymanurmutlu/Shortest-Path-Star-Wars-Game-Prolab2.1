@@ -16,6 +16,8 @@ import javax.swing.JFrame;
 
 public class starWarsProject extends JFrame {
 
+    final static int ARow = 5,ACol = 0, BRow = 0,BCol = 4,CRow = 0,CCol = 12,DRow = 5,DCol = 13,ERow = 10,ECol = 4;
+
     public starWarsProject(String title) throws HeadlessException {
         super(title);
 
@@ -38,10 +40,7 @@ public class starWarsProject extends JFrame {
         byte stormtrooperNum = 0, darthVaderNum = 0, kyloRenNum = 0;
         int[][] map = new int[11][14];
         String[] output = null;
-        String[] doors = new String[20];
-        /*kotu karakterlerin girecegi kapilar icin dizi olusturuldu*/
 
-//        Location place = new Location();
         if (!harita.exists()) {
             System.out.println(harita.getName() + " adli dosya bulunamadi.");
             System.exit(0);
@@ -73,19 +72,61 @@ public class starWarsProject extends JFrame {
                 output = line.split("[,:]");/*string parse etme islemleri*/
                 System.out.println(output[1]);/*karakter adini verir*/
                 System.out.println(output[3]);/*kapi bilgisini verir*/
-                doors[row - 1] = output[3];
 
                 if (output[1].equalsIgnoreCase("stormtrooper")) {
-                    chr.add(new Stormtrooper("Stormtrooper" + stormtrooperNum, "kotu"));
-                    stormtrooperNum++;
+                    if (output[3].equalsIgnoreCase("a")) {
+                        chr.add(new Stormtrooper("Stormtrooper" + stormtrooperNum, "kotu", ARow, ACol,ARow, ACol));
+                        stormtrooperNum++;
+                    } else if (output[3].equalsIgnoreCase("b")) {
+                        chr.add(new Stormtrooper("Stormtrooper" + stormtrooperNum, "kotu", BRow, BCol, BRow, BCol));
+                        stormtrooperNum++;
+                    } else if (output[3].equalsIgnoreCase("c")) {
+                        chr.add(new Stormtrooper("Stormtrooper" + stormtrooperNum, "kotu", CRow, CCol, CRow, CCol));
+                        stormtrooperNum++;
+                    } else if (output[3].equalsIgnoreCase("d")) {
+                        chr.add(new Stormtrooper("Stormtrooper" + stormtrooperNum, "kotu", DRow, DCol,DRow, DCol));
+                        stormtrooperNum++;
+                    } else if (output[3].equalsIgnoreCase("e")) {
+                        chr.add(new Stormtrooper("Stormtrooper" + stormtrooperNum, "kotu", ERow, ECol,ERow, ECol));
+                        stormtrooperNum++;
+                    }
 
                 } else if (output[1].equalsIgnoreCase("darth vader")) {
-                    chr.add(new DarthVader("DarthVader" + darthVaderNum, "kotu"));
-                    darthVaderNum++;
+                      darthVaderNum++;
+                    if (output[3].equalsIgnoreCase("a")) {
+                        chr.add(new DarthVader("DarthVader" + darthVaderNum, "kotu", ARow, ACol, ARow, ACol));
+                        darthVaderNum++;
+                    } else if (output[3].equalsIgnoreCase("b")) {
+                        chr.add(new DarthVader("DarthVader" + darthVaderNum, "kotu", BRow, BCol, BRow, BCol));
+                        darthVaderNum++;
+                    } else if (output[3].equalsIgnoreCase("c")) {
+                        chr.add(new DarthVader("DarthVader" + darthVaderNum, "kotu", CRow, CCol,CRow, CCol));
+                        darthVaderNum++;
+                    } else if (output[3].equalsIgnoreCase("d")) {
+                        chr.add(new DarthVader("DarthVader" + darthVaderNum, "kotu", DRow, DCol,DRow, DCol));
+                        darthVaderNum++;
+                    } else if (output[3].equalsIgnoreCase("e")) {
+                        chr.add(new DarthVader("DarthVader" + darthVaderNum, "kotu", ERow, ECol, ERow, ECol));
+                        darthVaderNum++;
+                    }
 
                 } else if (output[1].equalsIgnoreCase("kylo ren")) {
-                    chr.add(new KyloRen("KyloRen" + kyloRenNum, "kotu"));
-                    kyloRenNum++;
+                  if (output[3].equalsIgnoreCase("a")) {
+                        chr.add(new KyloRen("KyloRen" + kyloRenNum, "kotu", ARow, ACol, ARow, ACol));
+                        kyloRenNum++;
+                    } else if (output[3].equalsIgnoreCase("b")) {
+                        chr.add(new KyloRen("KyloRen" + kyloRenNum, "kotu", BRow, BCol, BRow, BCol));
+                        kyloRenNum++;
+                    } else if (output[3].equalsIgnoreCase("c")) {
+                        chr.add(new KyloRen("KyloRen" + kyloRenNum, "kotu", CRow, CCol, CRow, CCol));
+                        kyloRenNum++;
+                    } else if (output[3].equalsIgnoreCase("d")) {
+                        chr.add(new KyloRen("KyloRen" + kyloRenNum, "kotu", DRow, DCol,DRow, DCol));
+                        kyloRenNum++;
+                    } else if (output[3].equalsIgnoreCase("e")) {
+                        chr.add(new KyloRen("KyloRen" + kyloRenNum, "kotu", ERow, ECol,ERow, ECol));
+                        kyloRenNum++;
+                    }
                 }
             }
             line = reader.readLine();
@@ -112,7 +153,6 @@ public class starWarsProject extends JFrame {
                     /*sutun sayisini arttirdik*/
                     j++;
                     if (say == 15) {
-                        //System.out.println();  SILINECEK
                         say = 1;
                         j = 0;
                         /*map dizisinde sutun degerini gosteren j degiskenini sifirladik*/
@@ -134,40 +174,28 @@ public class starWarsProject extends JFrame {
             }
             System.out.println();
         }
-//               	// input maze
-//		int[][] mat =
-//		{
-//			{ 1, 1, 1, 1, 1, 0, 0, 1, 1, 1 },
-//			{ 0, 1, 1, 1, 1, 1, 0, 1, 0, 1 },
-//			{ 0, 0, 1, 0, 1, 1, 1, 0, 0, 1 },
-//			{ 1, 0, 1, 1, 1, 0, 1, 1, 0, 1 },
-//			{ 0, 0, 0, 1, 0, 0, 0, 1, 0, 1 },
-//			{ 1, 0, 1, 1, 1, 0, 0, 1, 1, 0 },
-//			{ 0, 0, 0, 0, 1, 0, 0, 1, 0, 1 },
-//			{ 0, 1, 1, 1, 1, 1, 1, 1, 0, 0 },
-//			{ 1, 1, 1, 1, 1, 0, 0, 1, 1, 1 },
-//			{ 0, 0, 1, 0, 0, 1, 1, 0, 0, 1 },
-//		};
+
 
         System.out.println("\ngecici satir " + row);
         /*SILINECEK*/
 
-        System.out.println("KARAKTERLER:\nMaster Yoda'nin canlari yarim gider.MASTER YODA ICIN M HAFINE BASIN\nLuke Skywalker'Ä±n ekstra Ã¶zelliÄŸi yoktur.LUKE SKYWALKER ICIN S HAFINE BASIN");
+        System.out.println("KARAKTERLER:\nMaster Yoda'nin canlari yarim gider.MASTER YODA ICIN M HAFINE BASIN\nLuke Skywalker'ýn ekstra özelliði yoktur.LUKE SKYWALKER ICIN S HAFINE BASIN");
         System.out.println("\nKARAKTERINI SEC VE BASLA !\nSECIM:");
         String gamerchr = input.nextLine();
 
         if (gamerchr.equalsIgnoreCase("m")) {
-            chr.add(new MasterYoda("MasterYoda", "Iyi"));
+            chr.add(new MasterYoda("MasterYoda", "Iyi", 6,5,6,5,6));
+
         } else if (gamerchr.equalsIgnoreCase("s")) {
-            chr.add(new LukeSkywalker("LukeSkywalker", "Iyi"));
+            chr.add(new LukeSkywalker("LukeSkywalker", "Iyi", 3,5,6,5,6));
         } else {
             while (!(gamerchr.equalsIgnoreCase("m") || gamerchr.equalsIgnoreCase("s"))) {
                 System.out.println("Lutfen S ya da M harfi giriniz!");
                 gamerchr = input.nextLine();
                 if (gamerchr.equalsIgnoreCase("m")) {
-                    chr.add(new MasterYoda("MasterYoda", "Iyi"));
+                    chr.add(new MasterYoda("MasterYoda", "Iyi", 6,5,6,5,6));
                 } else if (gamerchr.equalsIgnoreCase("s")) {
-                    chr.add(new LukeSkywalker("LukeSkywalker", "Iyi"));
+                    chr.add(new LukeSkywalker("LukeSkywalker", "Iyi", 3,5,6,5,6));
                 }
             }
 
@@ -176,20 +204,17 @@ public class starWarsProject extends JFrame {
         Graphic graphic = new Graphic();
         /*grafik nesnesi olusturuldu*/
         graphic.grphcChr = chr;
-        /*graphic classinin icindeki grphcChr arraylistine main iÃ§indeki arraylist atandi*/
+        /*graphic classinin icindeki grphcChr arraylistine main içindeki arraylist atandi*/
         graphic.grphcMap = map;
         /*Graphic classina harita konum bilgilerini iceren map dizisi gonderildi*/
 
-        
-        
         starWarsProject screen = new starWarsProject("Star Wars");
         screen.setSize(700, 700);
         screen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Find shortest path from source (0, 0) to
         // destination (7, 5)
-        chr.get(0).shortestPath(map, 0, 12, 5, 6);
-
+        //chr.get(0).shortestPath(map, 0, 12, 5, 6);
         graphic.requestFocus();
         /*Klavyeden girdi alinacagi icin odagi graphic nesnesine verdik*/
         graphic.addKeyListener(graphic);
@@ -201,8 +226,7 @@ public class starWarsProject extends JFrame {
 
         // Find shortest path from source (0, 0) to
         // destination (7, 5)
-        chr.get(0).shortestPath(map, 0, 12, 4, 6);
-
+        //chr.get(0).shortestPath(map, 0, 12, 4, 6);
         screen.add(graphic);
         screen.setVisible(true);
         /*JFramemin gozukmesi icin girilmis bir komut*/
@@ -211,7 +235,9 @@ public class starWarsProject extends JFrame {
 
         graphic.choosenCharacter = gamerchr;
         /*kullanicinin sectigi iyi karakter Graphic classina atandi*/
-        graphic.grphcDoors = doors;
-        /*kotu karakterlerin oyuna girdigi kapilar Graphic classina atandi*/
+        for(i=0;i<chr.size()-1;i++)
+        {
+        	chr.get(i).shortestPath(map, chr.get(i).location.getMatrixRow(),chr.get(i).location.getMatrixCol(), chr.get(chr.size() - 1).getLocation().matrixRow, chr.get(chr.size() - 1).getLocation().matrixCol);
+        }
     }
 }

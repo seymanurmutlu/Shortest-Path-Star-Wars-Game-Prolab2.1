@@ -1,16 +1,44 @@
 
 import java.util.Queue;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 
 public class Character {
 
     public String name;/*karakterin adini tutar*/
     public String kind;/*karakterin turunu tutar*/
     Location location = new Location();
+    public int lives;
+	public int startRow;
+	public int startCol;
 
-    public Character(String name, String kind) {
+    public Character(String name, String kind, int matrixRow, int matrixCol, int startRow, int startCol) {
         this.name = name;
         this.kind = kind;
+        location.matrixRow = matrixRow;
+        location.matrixCol = matrixCol;
+        this.startRow=startRow;
+        this.startCol=startCol;
+    }
+    
+        public int characterMoveX(int currentX, int nextX){
+        if(nextX > currentX){
+           return (currentX+1);
+        }else if(nextX < currentX){
+            return (currentX-1);
+        }else{
+            return currentX;
+        }
+    }
+    
+        public int characterMoveY(int currentY, int nextY){
+        if(nextY > currentY){
+           return (currentY+1);
+        }else if(nextY < currentY){
+            return (currentY-1);
+        }else{
+            return currentY;
+        }
     }
 
     public String getName() {
@@ -52,10 +80,22 @@ public class Character {
         this.location.matrixCol = col;
     }
 
-    public void printMatrix() { 
+    public void printMatrix() {
         System.out.println("matrix row : " + location.matrixRow);
         System.out.println("matrix col : " + location.matrixCol);
-       
+
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
+    public int decreaseLives(int lives) {/*this method for decreasing live numbers */
+        return this.lives=lives-1;
     }
 
     // Binary Maze'in boyutu
@@ -75,14 +115,33 @@ public class Character {
                 && mat[row][col] == 1 && !visited[row][col];
     }
 
-    public void shortestPath(int mat[][], int i, int j, int x, int y) {/*sonrasinda duzenleme yapilacak */
+    public int[] arr;
+
+    public ArrayList<Location> kopyala(ArrayList<Location> kopyagel) {
+        ArrayList<Location> kopya = new ArrayList<Location>();
+        kopya = kopyagel;
+        for (int i = 0; i < kopya.size(); i++) {
+
+         //   System.out.println("-kopya-" + kopya.get(i).path.get(i).matrixRow + "," + kopya.get(i).path.get(i).matrixCol);
+
+        }
+        return kopya;
+    }
+
+    public ArrayList<Location> deneme = new ArrayList<Location>();
+
+    //shortest path i kopyalamak icin buraya yeni bir q 
+    public Queue<Location> q = new ArrayDeque<>();
+    public ArrayList<Integer> shortestPathRows;
+    public ArrayList<Integer> shortestPathCols;
+
+    public Queue<Location> shortestPath(int mat[][], int i, int j, int x, int y) {/*sonrasinda duzenleme yapilacak */
 
         // construct a matrix to keep track of visited cells
         boolean[][] visited = new boolean[rowNum][colNum];
 
         // create an empty queue
-        Queue<Location> q = new ArrayDeque<>();
-
+        //Queue<Location> q = new ArrayDeque<>();
         // mark source cell as visited and enqueue the source node
         visited[i][j] = true;
         q.add(new Location(i, j, 0));
@@ -97,8 +156,8 @@ public class Character {
 
             // (i, j) represents current cell and dist stores its
             // minimum distance from the source
-            i = node.xAxis;
-            j = node.yAxis;
+            i = node.matrixRow;
+            j = node.matrixCol;
             int dist = node.distance;
 
             // if destination is found, update min_dist and stop
@@ -119,12 +178,15 @@ public class Character {
                 }
             }
         }
+
         if (min_dist != Integer.MAX_VALUE) {
-            System.out.print("The shortest path from source to destination "
+            System.out.println("The shortest path from source to destination "
                     + "has length " + min_dist);
         } else {
-            System.out.print("Destination can't be reached from source");
+            System.out.println("Destination can't be reached from source");
         }
 
+        return q;
     }
+
 }

@@ -1,17 +1,15 @@
-
 public class MasterYoda extends Character {
 
-    private int lives;
     private Location location = new Location();
 
-    public MasterYoda(String name, String kind) {
-        super(name, kind);
+    public MasterYoda(String name, String kind,int lives,int matrixRow, int matrixCol,int startRow,int startCol) {
+        super(name, kind, matrixRow, matrixCol,startRow,startCol);
         this.location.matrixRow = 5; // map [satir] [sutun]
         this.location.matrixCol = 6;
         this.location.xAxis = 6;
         this.location.yAxis = 5;
-        /*martis uzerinde sag-sol hareketi sutun sayisini degistirir*/
-        lives = 6;
+        /*matris uzerinde sag-sol hareketi sutun sayisini degistirir*/
+        this.lives=lives;
     }
 
     public String getName() {
@@ -68,7 +66,7 @@ public class MasterYoda extends Character {
     }
 
     public int decreaseLives(int lives) {/*this method for decreasing live numbers */
-        return lives--;
+    	return this.lives=lives-1;
     }
 
 }

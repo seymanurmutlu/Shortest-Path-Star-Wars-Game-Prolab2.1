@@ -1,18 +1,25 @@
 
+import java.util.ArrayList;
+
+
 public class Location {
     
     int xAxis = 0, yAxis = 0, distance = 0;
     int matrixRow = 0, matrixCol = 0;
     
-    Location(int xAxis, int yAxis, int distance) {
-        this.xAxis = xAxis;
-        this.yAxis = yAxis;
+    
+    ArrayList<Location> path;
+    Location(int matrixRow, int matrixCol, int distance) {
+        path=new ArrayList<Location>();
+        this.matrixRow = matrixRow;
+        this.matrixCol = matrixCol;
         this.distance = distance;
     }
 
     Location() {
         /*iyi krakterlerin kullanabilmesi icin default constructor*/
     }
+    
 
     public int getxAxis() {
         return xAxis;
@@ -39,11 +46,12 @@ public class Location {
     }
 
     public int getMatrixRow() {
+    	
         return matrixRow;
     }
 
     public void setMatrixRow(int matrixRow) {
-        this.matrixRow = matrixRow;
+    	this.matrixRow = matrixRow;
     }
 
     public int getMatrixCol() {
@@ -51,7 +59,7 @@ public class Location {
     }
 
     public void setMatrixCol(int matrixCol) {
-        this.matrixCol = matrixCol;
+    	this.matrixCol = matrixCol;
     }
     
 
